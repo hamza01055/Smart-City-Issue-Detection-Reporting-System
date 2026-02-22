@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #060810;
+  --bg-card: #0d1117;
+  --bg-elevated: #161b22;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-red: #ef4444;
+  --accent-green: #22c55e;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --border: #21262d;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.8; }
+  50%  { transform: scale(1.05); opacity: 0.4; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+@keyframes scan {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+.animate-fade-up-delay {
+  animation: fadeUp 0.5s ease 0.15s forwards;
+  opacity: 0;
+}
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.5s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  animation: scan 2s linear infinite;
+  pointer-events: none;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #f0f6fc 0%, #3b82f6 50%, #f0f6fc 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glass {
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(33, 38, 45, 0.8);
+}
